@@ -1,0 +1,103 @@
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 offset-sm-3">
+        <h2>Create event</h2>
+        <alert></alert>
+        <form [formGroup]="EventForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              formControlName="name"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+            />
+
+            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+              <div *ngIf="f.name.errors.required">name is required</div>
+              <div *ngIf="f.name.errors.minlength">
+                name must be at least 6 characters
+              </div>
+              <div *ngIf="f.name.errors.maxlength">
+                name must be no more than 30 characters
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="address">address</label>
+            <input
+              type="text"
+              formControlName="address"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.address.errors }"
+            />
+
+            <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+              <div *ngIf="f.address.errors.required">address is required</div>
+              <div *ngIf="f.address.errors.minlength">
+                address must be at least 6 characters
+              </div>
+              <div *ngIf="f.address.errors.maxlength">
+                address must be no more than 30 characters
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="coordinates">coordinates</label>
+            <input
+              type="text"
+              formControlName="coordinates"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.coordinates.errors }"
+            />
+
+            <div
+              *ngIf="submitted && f.coordinates.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f.coordinates.errors.required">
+                coordinates is required
+              </div>
+              <div *ngIf="f.coordinates.errors.minlength">
+                coordinates must be at least 6 characters
+              </div>
+              <div *ngIf="f.coordinates.errors.maxlength">
+                coordinates must be no more than 30 characters
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="description">description</label>
+            <input
+              type="text"
+              formControlName="description"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.description.errors }"
+            />
+
+            <div
+              *ngIf="submitted && f.description.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f.description.errors.required">
+                Username is required
+              </div>
+              <div *ngIf="f.description.errors.minlength">
+                Username must be at least 6 characters
+              </div>
+              <div *ngIf="f.description.errors.maxlength">
+                Username must be no more than 30 characters
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <button [disabled]="loading" class="btn btn-primary">
+              Create
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

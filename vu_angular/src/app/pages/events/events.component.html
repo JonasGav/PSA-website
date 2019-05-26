@@ -1,0 +1,35 @@
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 offset-sm-3">
+        <h1>Hi {{ currentUser.fullname }}!</h1>
+        <p>You can delete Events at this table {{ currentUser.id }}</p>
+        <h3>All registered events:</h3>
+        <ul>
+          <li
+            *ngFor="
+              let event of events
+                | paginate: { itemsPerPage: 3, currentPage: p }
+            "
+          >
+            {{ event.name }} - {{ event.description }} - {{ event.address }}"
+            <a (click)="openEvent(event.id)" class="text-info">View </a>
+            <a
+              *ngIf="event.userId == currentUser.id"
+              (click)="editEvent(event.id)"
+              class="text-warning"
+              >Edit
+            </a>
+            <a
+              *ngIf="event.userId == currentUser.id"
+              (click)="deleteEvent(event.id)"
+              class="text-danger"
+              >Delete
+            </a>
+          </li>
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

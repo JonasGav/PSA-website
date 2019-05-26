@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <ul class="navbar-nav" routerLinkActive="active">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="home" *ngIf="currentUser"
+          >Home <span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="events" *ngIf="currentUser"
+          >Events <span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="createEvent" *ngIf="currentUser"
+          >Create Event <span class="sr-only">(current)</span></a
+        >
+      </li>
+    </ul>
+    <ul class="nav navbar-nav ml-auto" routerLinkActive="active">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="login" *ngIf="!currentUser"
+          >Login <span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="settings" *ngIf="currentUser"
+          >{{ currentUser.username }} <span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li class="nav-item" *ngIf="currentUser">
+        <a class="nav-link" (click)="logout()"
+          >Logout <span class="sr-only">(current)</span></a
+        >
+      </li>
+    </ul>
+  </div>
+</nav>

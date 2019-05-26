@@ -1,0 +1,39 @@
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 offset-sm-3">
+        <alert></alert>
+        <div *ngIf="event$ | async as event">
+          <p>Name: {{ event.name }}</p>
+          <p>address: {{ event.address }}</p>
+          <p>description: {{ event.description }}</p>
+          <p>coordinates: {{ event.coordinates }}</p>
+          <p>max_reservation: {{ event.max_reservation }}</p>
+          <h2>Comments</h2>
+          <div *ngIf="comments$ | async as comments">
+            <li *ngFor="let comment of comments">
+              {{ comment.userId }} : {{ comment.text }}
+            </li>
+            <input type="text" [(ngModel)]="newComment" />
+            <button (click)="addComment()">add comment</button>
+          </div>
+          <div *ngIf="registrations$ | async as registrations">
+            Registrations: {{ registrations.length }}
+            <button
+              [disabled]="alreadyRegistered(registrations)"
+              (click)="registerToEvent()"
+            >
+              register
+            </button>
+            <button
+              [disabled]="!alreadyRegistered(registrations)"
+              (click)="unRegisterToEvent(registrations)"
+            >
+              unegister
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
