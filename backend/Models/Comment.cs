@@ -12,6 +12,7 @@ namespace backend.Models
         [Required]
         public int Id { get; set; }
         [Required]
+        [StringLength(50, MinimumLength = 6)]
         public string Text { get; set;}
         [Required]
         [ForeignKey("Event")]

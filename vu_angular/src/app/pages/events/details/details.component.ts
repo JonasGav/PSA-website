@@ -63,13 +63,17 @@ export class DetailsComponent implements OnInit {
   addComment() {
     if (this.newComment) {
       if (this.newComment.length < 50) {
-        this.eventsService
-          .addComment(this.id, this.newComment)
-          .subscribe(res => {
-            this.comments$ = this.eventsService.getComments(this.id);
-            console.log(this.eventsService.getComments(this.id));
-            this.newComment = undefined;
-          });
+        if (this.newComment.length > 5) {
+          this.eventsService
+            .addComment(this.id, this.newComment)
+            .subscribe(res => {
+              this.comments$ = this.eventsService.getComments(this.id);
+              console.log(this.eventsService.getComments(this.id));
+              this.newComment = undefined;
+            });
+        } else {
+          this.alertService.error("Comment too short");
+        }
       } else {
         this.alertService.error("Comment too long");
       }
