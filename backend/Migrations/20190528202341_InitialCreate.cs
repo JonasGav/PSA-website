@@ -30,10 +30,10 @@ namespace backend.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    Name = table.Column<string>(nullable: false),
-                    Address = table.Column<string>(nullable: false),
-                    Coordinates = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(maxLength: 30, nullable: false),
+                    Address = table.Column<string>(maxLength: 30, nullable: false),
+                    Coordinates = table.Column<string>(maxLength: 30, nullable: true),
+                    Description = table.Column<string>(maxLength: 50, nullable: true),
                     MaxReservation = table.Column<int>(nullable: false),
                     UserId = table.Column<int>(nullable: false)
                 },
@@ -54,7 +54,7 @@ namespace backend.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    Text = table.Column<string>(nullable: false),
+                    Text = table.Column<string>(maxLength: 50, nullable: false),
                     EventId = table.Column<int>(nullable: false),
                     UserId = table.Column<int>(nullable: false)
                 },

@@ -9,7 +9,7 @@ using backend.Models;
 namespace backend.Migrations
 {
     [DbContext(typeof(backendContext))]
-    [Migration("20190526151141_InitialCreate")]
+    [Migration("20190528202341_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,7 +28,8 @@ namespace backend.Migrations
                     b.Property<int>("EventId");
 
                     b.Property<string>("Text")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasMaxLength(50);
 
                     b.Property<int>("UserId");
 
@@ -47,16 +48,20 @@ namespace backend.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Address")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasMaxLength(30);
 
-                    b.Property<string>("Coordinates");
+                    b.Property<string>("Coordinates")
+                        .HasMaxLength(30);
 
-                    b.Property<string>("Description");
+                    b.Property<string>("Description")
+                        .HasMaxLength(50);
 
                     b.Property<int>("MaxReservation");
 
                     b.Property<string>("Name")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasMaxLength(30);
 
                     b.Property<int>("UserId");
 
